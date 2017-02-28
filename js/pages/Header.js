@@ -13,11 +13,23 @@ import {
     Platform
 } from 'react-native';
 
+
+import CustomThemePage from "./my/CustomThemePage";
+
 export default class MainPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            customThemeViewVisible: false,  //主题是否更改参数
+            theme: this.props.theme,
+        };
+    }
+
+
     render(){
         return (
-            <View style={styles.container}>
-                <Image source={require('../../res/images/ic_header_logo.png')}
+            <View style={[styles.container,this.state.theme.styles.navBar]}>
+                <Image source={require('../../res/images/ic_main.png')}
                        style={styles.headerLogo} />
                 <View style={styles.searchBox}>
                     <Image source={require('../../res/images/ic_search.png')}

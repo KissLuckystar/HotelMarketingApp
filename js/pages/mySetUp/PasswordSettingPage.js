@@ -13,7 +13,8 @@ import{
 import NavigationBar from '../../common/NavigationBar';
 import ViewUtil from '../../util/ViewUtil';
 import ThemeDao from "../../expand/dao/ThemeDao";
-import CustomThemePage from "./CustomThemePage";
+import CustomThemePage from "../my/CustomThemePage";
+import AboutCommon from "../my/AboutCommon";
 
 //引入全局样式
 import GlobalStyles from '../../../res/styles/GlobalStyles';
@@ -61,18 +62,20 @@ export default class PasswordSettingPage extends Component {
         return (
             <View style={styles.container}>
                 {navigationBar}
-                <TextInput style={styles.inputText} placeholder='请输入原密码' 
+                <TextInput style={styles.inputText} placeholder='请输入原密码' placeholderTextColor='#cccccc'
                         secureTextEntry={true} underlineColorAndroid="transparent" 
                         autoFocus={true} />
                 <View style={{height:1,backgroundColor:'#f4f4f4'}} />
-                <TextInput style={styles.inputText} placeholder='请输入新密码' secureTextEntry  underlineColorAndroid="transparent" />
+                <TextInput style={styles.inputText} placeholder='请输入新密码' placeholderTextColor='#cccccc' 
+                            secureTextEntry  underlineColorAndroid="transparent" />
                 <View style={{height:1,backgroundColor:'#f4f4f4'}} />
-                <TextInput style={styles.inputText} placeholder='请再次输入新密码' secureTextEntry underlineColorAndroid="transparent" />
+                <TextInput style={styles.inputText} placeholder='请再次输入新密码' placeholderTextColor='#cccccc' 
+                            secureTextEntry underlineColorAndroid="transparent" />
                 <TouchableOpacity onPress={()=>Alert.alert(
                     '系统提示',
                     '修改成功，请使用新密码登录'
                     )}>
-                    <View style={styles.passwordContainer}>
+                    <View style={[styles.passwordContainer,this.state.theme.styles.navBar]}>
                         <Text style={styles.passwordBtnTitle}>修改密码</Text>
                     </View>
                 </TouchableOpacity>
@@ -92,14 +95,13 @@ const styles=StyleSheet.create({
         fontSize: 16,
         backgroundColor:'#fff',
         textAlign:'center',
-        placeholderTextColor:'#cccccc'
     },
     passwordContainer:{
         backgroundColor: '#1DBAF1',
         margin: 10,
         borderRadius: 6,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',        
     },
     passwordBtnTitle:{
         fontSize: 17,
