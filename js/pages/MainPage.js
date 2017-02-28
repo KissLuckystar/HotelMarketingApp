@@ -15,10 +15,11 @@ import {
     Alert,
     ScrollView,
     TouchableOpacity,
-    ListView
+    ListView,
+    Platform,
+    TextInput
 } from 'react-native';
 
-import Header from './Header';
 import ViewPager from 'react-native-viewpager';
 import MenuButton from '../common/MenuButton';
 import ShortLine from '../component/ShortLine';
@@ -89,8 +90,25 @@ export default class MainPage extends Component {
             }),
             products :PRODUCT_DATA.data,
 
-            customThemeViewVisible: false,
             theme: this.props.theme,
+        }
+    }
+
+    componentDidMount() {
+        this.props.homeComponent.addSubscriber(this.onSubscriber);   //用于设置主题颜色
+    }
+
+    componentWillUnmount() {
+        this.props.homeComponent.removeSubscriber(this.onSubscriber);   //用于设置主题颜色
+    }
+
+    onSubscriber = (preTab, currentTab)=> {                           //用于设置主题颜色
+        var changedValues = this.props.homeComponent.changedValues;   
+        if (changedValues.my.themeChange && preTab.styles) {
+            this.setState({
+                theme: preTab
+            })
+            return;
         }
     }
     
@@ -144,10 +162,6 @@ export default class MainPage extends Component {
         );
      }
 
-
-
-
-
     /**
      * dataSource:提供页面数据
      * renderPage:用于渲染页面视图，指定ViewPager每页的内容
@@ -161,7 +175,27 @@ export default class MainPage extends Component {
     render(){
         return (
             <View style={{flex:1}}>
-                <Header {...this.props} theme={this.state.theme} />
+                {/*homeComponent用于传递页面*/}
+                {/*<Header {...this.props} theme={this.state.theme} homeComponent={MainPage} />  */}
+
+
+                <View style={[styles.container,this.state.theme.styles.navBar]}>
+                    <Image source={require('../../res/images/ic_main_logo.png')}
+                        style={styles.headerLogo} />
+                    <View style={styles.searchBox}>
+                        <Image source={require('../../res/images/ic_search.png')}
+                            style={styles.searchIcon} />
+                        <TextInput
+                            keyboardType='web-search'
+                            placeholder='搜索营销/产品信息'
+                            style={styles.inputText} underlineColorAndroid="transparent" />
+                        <Image source={require('../../res/images/ic_voice.png')}
+                            style={styles.voiceIcon} />
+                    </View>
+                    <Image source={require('../../res/images/ic_scan.png')}
+                        style={styles.scanIcon} />
+                </View>
+
                 {/* 首页展示区*/}
                 <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
                     <View style={{height:130}}>
@@ -265,7 +299,59 @@ export default class MainPage extends Component {
     }
 }
 
-const styles=StyleSheet.create({
+const styles=StyleSheet.create({   
+    container:{
+        flexDirection:'row', //水平排布
+        paddingLeft:10,
+        paddingRight:10,
+        paddingTop:Platform.OS === 'ios' ? 20:0,//处理ios状态栏
+        height:Platform.OS === 'ios' ? 68 : 48,
+        backgroundColor:'#d74047',
+        alignItems:'center'  //使元素垂直居中排布，当flexDirection为column时，元素为水平居中
+    },
+    headerLogo:{
+        height:24,
+        width:64,
+        resizeMode:'stretch' //不维持宽高比，宽高填满容器
+    },
+    searchBox:{
+        flex:1,  // 类似于android中的layout_weight,设置为1即自动拉伸填充
+        height:30,
+        flexDirection:'row',
+        borderRadius:5,  //设置圆角
+        backgroundColor:'white',
+        alignItems:'center',
+        marginLeft:8,
+        marginRight:12
+    },
+    searchIcon:{
+        marginLeft:6,
+        marginRight:6,
+        width:16.7,
+        height:16.7,
+        resizeMode:'stretch'
+    },
+    inputText:{
+        flex:1,
+        padding:0,
+        backgroundColor:'transparent',
+        fontSize:12
+    },
+    voiceIcon:{
+        marginLeft:5,
+        marginRight:8,
+        width:15,
+        height:20,
+        resizeMode:'stretch'
+    },
+    scanIcon:{
+        height:26.7,
+        width:26.7,
+        resizeMode:'stretch'
+    },
+    
+    
+    
     page:{
         flex:1,
         height:130,
