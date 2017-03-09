@@ -34,17 +34,17 @@ var item_width = (width-1)/2;
 
 //定义一个常量数组，用于保存轮播图图片信息
 const BANNER_IMGS=[
-    require('../../res/images/1.jpg'),
-    require('../../res/images/2.jpg'),
-    require('../../res/images/3.jpg'),
-    require('../../res/images/4.jpg')
+    require('../../res/images/1.png'),
+    require('../../res/images/2.png'),
+    require('../../res/images/3.png'),
+    require('../../res/images/4.png')
 ];
 
 const CENTER_IMGS = [
-    require('../../res/images/ic_main_sale.png'),
-    require('../../res/images/ic_main_recharge.png'),
-    require('../../res/images/ic_main_comment.png'),
-    require('../../res/images/ic_main_product.png')  
+    require('../../res/images/home_icons/youhui.png'),
+    require('../../res/images/home_icons/chongzhi.png'),
+    require('../../res/images/home_icons/pinglun.png'),
+    require('../../res/images/home_icons/licai.png')  
 ];
 
 const PRODUCT_DATA={
@@ -208,27 +208,27 @@ export default class MainPage extends Component {
                     </View>
                     <View style={styles.menuContainer}>
                         <View style={styles.menuView}>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/wdgz.png')}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/jd.png')}
                                         showText={'酒店'} tag={'wdgz'}
                                         onClick={this._onMenuClick}/>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/wlcx.png')}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/cy.png')}
                                         showText={'餐饮'} tag={'wlcx'}
                                         onClick={this._onMenuClick}/>
                             <MenuButton renderIcon={require('../../res/images/home_icons/cz.png')}
                                         showText={'充值'} tag={'cz'}
                                         onClick={this._onMenuClick}/>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/dyp.png')}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/fk.png')}
                                         showText={'付款'} tag={'dyp'}
                                         onClick={this._onMenuClick}/>
                         </View>
                         <View style={styles.menuView}>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/yxcz.png')}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/lc.png')}
                                         showText={'理财产品'} tag={'yxcz'}
                                         onClick={this._onMenuClick}/>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/xjk.png')}
-                                        showText={'小金库'} tag={'xjk'}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/yxhd.png')}
+                                        showText={'营销活动'} tag={'xjk'}
                                         onClick={this._onMenuClick}/>
-                            <MenuButton renderIcon={require('../../res/images/home_icons/ljd.png')}
+                            <MenuButton renderIcon={require('../../res/images/home_icons/jf.png')}
                                         showText={'领积分'} tag={'ljd'}
                                         onClick={this._onMenuClick}/>
                             <MenuButton renderIcon={require('../../res/images/home_icons/gd.png')}
@@ -241,43 +241,47 @@ export default class MainPage extends Component {
                     <View style={{marginTop:8,backgroundColor:'white'}}>
                         <View style={{height:40,justifyContent:'center',alignItems:'center'}}><Text>推荐活动</Text></View>
                         <View style={{flexDirection:'row',height:70}}>
-                                <TouchableOpacity>
+                            <TouchableOpacity>
                                 <View style={{flexDirection:'row',width:item_width,marginTop:5}}>
-                                    <Image source={CENTER_IMGS[0]} style={{width:66,height:47,marginLeft:20}}/>
+                                    <Image source={CENTER_IMGS[0]} style={{width:45,height:45,marginLeft:30,resizeMode:'stretch'}}/>
                                     <View style={{marginLeft:10}}>
                                         <Text>每日优惠</Text>
-                                        <Text style={{color:'#999',fontSize:13,marginTop:5}}>优惠早知道</Text>
+                                        <Text style={{color:'#999',fontSize:13,marginTop:10}}>优惠早知道</Text>
                                     </View>                                               
                                 </View>
-                                </TouchableOpacity>
-                                <Image source={require('../../res/images/ic_main_shu.png')} style={{height:60,marginTop:10}}/>
-                                <TouchableOpacity>
-                                <View style={{flexDirection:'row',width:item_width,marginTop:8}}>
-                                    <Image source={CENTER_IMGS[1]} style={{width:40,height:53,marginLeft:20}}/>
+                            </TouchableOpacity>
+                            <Image source={require('../../res/images/ic_main_shu.png')} style={{height:60,marginTop:10}}/>
+                            <TouchableOpacity>
+                                <View style={{flexDirection:'row',width:item_width,marginTop:5}}>
+                                    <Image source={CENTER_IMGS[1]} style={{width:45,height:45,marginLeft:30,resizeMode:'stretch'}}/>
                                     <View style={{marginLeft:10}}>
                                         <Text>充值返现</Text>
-                                        <Text style={{color:'#999',fontSize:13,marginTop:5}}>充100送50</Text>
+                                        <Text style={{color:'#999',fontSize:13,marginTop:10}}>充100送50</Text>
                                     </View>                                   
                                 </View>
-                                </TouchableOpacity>
+                            </TouchableOpacity>
                         </View>
                         <View style={GlobalStyles.line}/>
                         <View style={{flexDirection:'row',height:70}}>
-                                <View style={{flexDirection:'row',width:item_width,marginTop:3}}>
-                                    <Image source={CENTER_IMGS[2]} style={{width:50,height:67,marginLeft:20}}/>
-                                    <View style={{marginLeft:10,marginTop:8}}>
+                            <TouchableOpacity>
+                                <View style={{flexDirection:'row',width:item_width,marginTop:5}}>
+                                    <Image source={CENTER_IMGS[2]} style={{width:45,height:45,marginLeft:30,resizeMode:'stretch'}}/>
+                                    <View style={{marginLeft:10}}>
                                         <Text>评论送积分</Text>
-                                        <Text style={{color:'#999',fontSize:13,marginTop:5}}>评价免费拿积分</Text>
+                                        <Text style={{color:'#999',fontSize:13,marginTop:10}}>评价免费拿积分</Text>
                                     </View>                      
                                 </View>
-                                <Image source={require('../../res/images/ic_main_shu.png')} style={{height:60}}/>
-                                <View style={{flexDirection:'row',width:item_width,marginTop:8}}>
-                                    <Image source={CENTER_IMGS[3]} style={{width:40,height:40,marginLeft:20,marginTop:5}}/>
+                            </TouchableOpacity>
+                            <Image source={require('../../res/images/ic_main_shu.png')} style={{height:60}}/>
+                            <TouchableOpacity>
+                                <View style={{flexDirection:'row',width:item_width,marginTop:5}}>
+                                    <Image source={CENTER_IMGS[3]} style={{width:45,height:45,marginLeft:30,resizeMode:'stretch'}}/>
                                     <View style={{marginLeft:10}}>
                                         <Text>理财产品</Text>
-                                        <Text style={{color:'#999',fontSize:13,marginTop:5}}>购买理财产品</Text>
+                                        <Text style={{color:'#999',fontSize:13,marginTop:10}}>购买理财产品</Text>
                                     </View>               
                                 </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
 

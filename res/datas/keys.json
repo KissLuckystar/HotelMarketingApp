@@ -1,18 +1,13 @@
 [
   {
     "path": "stars:>1",
-    "name": "ALL",
-    "short_name": "ALL",
+    "name": "推荐产品",
+    "short_name": "recommend",
     "checked": true
   },
   {
-    "path": "Android",
-    "name": "Android",
-    "checked": true
-  },
-  {
-    "path": "iOS",
-    "name": "iOS",
+    "path": "ALL",
+    "name": "全部产品",
     "checked": true
   },
   {

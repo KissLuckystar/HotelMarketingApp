@@ -150,21 +150,25 @@ export default class MyPage extends Component {
                     {/*账单*/}
                     <View style={GlobalStyles.line}/>
                     {this.getItem(MORE_MENU.Bill, require('../../res/images/my/ic_custom_language.png'), '账单')}
+                    <View style={GlobalStyles.line}/>
                     {/*总资产*/}
                     <View style={GlobalStyles.line}/>
                     {this.getItem(MORE_MENU.Asset, require('../../res/images/my/ic_swap_vert.png'), '总资产')}
                     {/*余额*/}
                     <View style={GlobalStyles.line}/>
                     {this.getItem(MORE_MENU.Balance, require('../../res/images/my/ic_swap_vert.png'), '余额')}
+                    <View style={GlobalStyles.line}/>
 
                     {/*产品信息*/}
                     <Text style={styles.groupTitle}>产品信息</Text>
                     {/*我的产品*/}
                     <View style={GlobalStyles.line}/>
                     {this.getItem(MORE_MENU.Custom_Product, require('../../res/images/my/ic_custom_language.png'), '我的产品')}
+                    <View style={GlobalStyles.line}/>
                     {/*产品收益*/}
                     <View style={GlobalStyles.line}/>
                     {this.getItem(MORE_MENU.Earnings, require('../../res/images/my/ic_swap_vert.png'), '产品收益')}
+                    
 
                     {/*系统设置*/}
                     <Text style={styles.groupTitle}>系统设置</Text>

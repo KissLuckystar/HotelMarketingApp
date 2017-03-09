@@ -1,6 +1,6 @@
 /**
  *
- *
+ *产品页面产品项
  * @flow
  */
 'use strict';
@@ -59,7 +59,7 @@ export default class RespositoryCell extends Component {
                     style={[{width: 22, height: 22,},this.props.theme.styles.tabBarSelectedIcon]}
                     source={this.state.favoriteIcon}/>
             </TouchableHighlight>:null;
-        let description='<p>'+item.description+'</p>';
+        let note='<p>'+item.note+'</p>';
         return (
             <TouchableElement
                 onPress={this.props.onSelect}
@@ -69,7 +69,7 @@ export default class RespositoryCell extends Component {
                 <View style={GlobalStyles.cell_container}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Text style={styles.title}>
-                            {item.full_name}
+                            {item.name}
                         </Text>
 
                     </View>
@@ -77,7 +77,7 @@ export default class RespositoryCell extends Component {
                     {/*{item.description}*/}
                     {/*</Text>*/}
                     <HTMLView
-                        value={description}
+                        value={item.note}
                         onLinkPress={(url) => {
                             this.props.navigator.push({
                                 component: WebViewPage,
@@ -95,16 +95,21 @@ export default class RespositoryCell extends Component {
                     />
                     <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <Text style={styles.author}>Author: </Text>
+                            <Text style={styles.author}>年化收益率: </Text>
+                            <Text style={styles.author}>
+                                {item.annualRate}
+                            </Text>      
+                            {/*                    
                             <Image
                                 style={{width: 22, height: 22,}}
                                 source={{uri: item.owner.avatar_url}}
                             />
+                            */}
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <Text style={styles.author}>Stars: </Text>
+                            <Text style={styles.author}>起购金额: </Text>
                             <Text style={styles.author}>
-                                {item.stargazers_count}
+                                {item.minAmount}
                             </Text>
                         </View>
                         {favoriteButton}

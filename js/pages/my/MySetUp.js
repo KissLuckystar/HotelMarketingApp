@@ -13,7 +13,8 @@ import {
     View,
     Text,
     Alert,
-    TouchableHighlight
+    TouchableHighlight,
+    BackAndroid
 } from 'react-native';
 
 
@@ -155,7 +156,7 @@ export default class MySetUp extends Component {
                     <TouchableHighlight onPress={ () => Alert.alert(
                         '系统提示','您确定要退出系统吗？',
                         [
-                            {text:'确定',onPress:() => console.log('exit')},
+                            {text:'确定',onPress:() => BackAndroid.exitApp()},
                             {text:'取消',onPress:() => console.log('cancel')}
                         ]
                         )}>

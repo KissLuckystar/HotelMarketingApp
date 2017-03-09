@@ -13,23 +13,35 @@ import {
     Platform
 } from 'react-native';
 
-
-import CustomThemePage from "./my/CustomThemePage";
-
 export default class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            customThemeViewVisible: false,  //主题是否更改参数
             theme: this.props.theme,
         };
     }
+    componentDidMount() {
+        this.props.homeComponent.addSubscriber(this.onSubscriber);   //用于设置主题颜色
+    }
 
+    componentWillUnmount() {
+        this.props.homeComponent.removeSubscriber(this.onSubscriber);   //用于设置主题颜色
+    }
+
+    onSubscriber = (preTab, currentTab)=> {                           //用于设置主题颜色
+        var changedValues = this.props.homeComponent.changedValues;   
+        if (changedValues.my.themeChange && preTab.styles) {
+            this.setState({
+                theme: preTab
+            })
+            return;
+        }
+    }
 
     render(){
         return (
             <View style={[styles.container,this.state.theme.styles.navBar]}>
-                <Image source={require('../../res/images/ic_main.png')}
+                <Image source={require('../../res/images/ic_main_logo.png')}
                        style={styles.headerLogo} />
                 <View style={styles.searchBox}>
                     <Image source={require('../../res/images/ic_search.png')}
@@ -43,7 +55,7 @@ export default class MainPage extends Component {
                 </View>
                 <Image source={require('../../res/images/ic_scan.png')}
                        style={styles.scanIcon} />
-            </View>
+            </View>        
         )
     }
 } 

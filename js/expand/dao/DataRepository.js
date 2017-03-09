@@ -9,13 +9,13 @@
 import {
     AsyncStorage,
 } from 'react-native';
-//import Trending from "GitHubTrending";
-export var FLAG_STORAGE = {flag_popular: 'popular', flag_trending: 'trending'}
+import Trending from "GitHubTrending";
+export var FLAG_STORAGE = {flag_product: 'product', flag_trending: 'trending'}
 
 export default class DataRepository {
     constructor(flag) {
         this.flag = flag;
-        //if(flag===FLAG_STORAGE.flag_trending)this.treding=new Trending();
+        if(flag===FLAG_STORAGE.flag_trending)this.treding=new Trending();
     }
 
     saveRepository(url, items, callback) {
@@ -25,6 +25,7 @@ export default class DataRepository {
     }
 
     fetchRepository(url) {
+        
         return new Promise((resolve, reject)=> {
             this.fetchLocalRepository(url).then((wrapData)=> {
                 if (wrapData) {
@@ -47,9 +48,10 @@ export default class DataRepository {
             })
         })
     }
-
+    //从本地获取数据
     fetchLocalRepository(url) {
         return new Promise((resolve, reject)=> {
+            
             AsyncStorage.getItem(url, (error, result)=> {
                 if (!error) {
                     try {
@@ -65,10 +67,10 @@ export default class DataRepository {
             })
         })
     }
-
+    //从网络端获取数据
     fetchNetRepository(url) {
         return new Promise((resolve, reject)=> {
-            if (this.flag === FLAG_STORAGE.flag_popular) {
+            if (this.flag === FLAG_STORAGE.flag_product) {
                 fetch(url)
                     .then((response)=>response.json())
                     .catch((error)=> {
